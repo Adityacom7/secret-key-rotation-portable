@@ -1,5 +1,9 @@
 # Secret Key Rotation Tool (portable)
 
+![Secret Key Rotation Tool — UI overview](docs/ui-mockup.svg)
+
+> The image above is a representative mockup of the single-page UI (not a live screenshot). The real page is served from `skr-app/index.html` when you run the script.
+
 A **local-only** web tool to safely add / update keys in many AWS Secrets Manager
 secrets at once, with per-path key-count verification, local backups, and a
 rollback path. Nothing is exposed to the internet — the backend binds to

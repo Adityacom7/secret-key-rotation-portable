@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1180" viewBox="0 0 960 1180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <style>
+      .bg{fill:#0f1115;} .panel{fill:#171a21;} .field{fill:#0c0e13;}
+      .line{stroke:#2a2f3a;stroke-width:1;} .text{fill:#e6e9ef;} .muted{fill:#9aa3b2;}
+      .accent{fill:#4f9cff;} .red{fill:#b4432f;} .grey{fill:#2a2f3a;}
+      .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+    </style>
+  </defs>
+
+  <rect class="bg" width="960" height="1180"/>
+
+  <!-- header -->
+  <rect class="bg" width="960" height="64"/>
+  <line class="line" x1="0" y1="64" x2="960" y2="64"/>
+  <text class="text" x="24" y="34" font-size="20" font-weight="700">Secret Key Rotation Tool</text>
+  <text class="muted" x="24" y="52" font-size="13">Phase 1 — local only (127.0.0.1) — no writes yet</text>
+
+  <!-- panel 1 -->
+  <rect class="panel line" x="24" y="84" width="912" height="190" rx="10"/>
+  <text class="text" x="44" y="114" font-size="16" font-weight="600">1. Choose AWS account</text>
+  <rect class="accent" x="44" y="128" width="300" height="34" rx="8"/>
+  <text x="194" y="150" font-size="13" fill="#fff" text-anchor="middle">Start / Find AWS accounts on this machine</text>
+  <text class="muted" x="44" y="186" font-size="13">AWS account (profile)</text>
+  <rect class="field line" x="44" y="194" width="430" height="34" rx="8"/>
+  <text class="text mono" x="56" y="216" font-size="13">default</text>
+  <text class="muted" x="490" y="186" font-size="13">Region</text>
+  <rect class="field line" x="490" y="194" width="200" height="34" rx="8"/>
+  <text class="text mono" x="502" y="216" font-size="13">ap-south-1</text>
+  <rect class="accent" x="44" y="240" width="130" height="30" rx="8"/>
+  <text x="109" y="260" font-size="13" fill="#fff" text-anchor="middle">Check Identity</text>
+  <rect class="grey" x="184" y="240" width="160" height="30" rx="8"/>
+  <text class="text" x="264" y="260" font-size="13" text-anchor="middle">Check Permissions</text>
+  <rect x="704" y="196" width="150" height="26" rx="13" fill="rgba(47,191,113,.15)"/>
+  <text x="779" y="213" font-size="12" fill="#2fbf71" text-anchor="middle">NON-PROD / OK</text>
+
+  <!-- panel 2 -->
+  <rect class="panel line" x="24" y="286" width="912" height="310" rx="10"/>
+  <text class="text" x="44" y="316" font-size="16" font-weight="600">2. Secret Manager paths</text>
+  <rect class="field line" x="44" y="328" width="810" height="56" rx="8"/>
+  <text class="muted mono" x="56" y="350" font-size="13">my/app/service-secrets</text>
+  <rect class="accent" x="44" y="396" width="290" height="32" rx="8"/>
+  <text x="189" y="417" font-size="13" fill="#fff" text-anchor="middle">Check (scan &amp; backup — read only)</text>
+  <rect class="grey" x="344" y="396" width="310" height="32" rx="8"/>
+  <text class="text" x="499" y="417" font-size="13" text-anchor="middle">jq Verify (independent, local backups)</text>
+
+  <!-- scan result table -->
+  <line class="line" x1="44" y1="448" x2="854" y2="448"/>
+  <text class="muted" x="52" y="466" font-size="12">path</text>
+  <text class="muted" x="430" y="466" font-size="12">keys (py)</text>
+  <text class="muted" x="520" y="466" font-size="12">keys (jq)</text>
+  <text class="muted" x="610" y="466" font-size="12">match</text>
+  <text class="muted" x="690" y="466" font-size="12">status</text>
+  <line class="line" x1="44" y1="476" x2="854" y2="476"/>
+  <text class="text mono" x="52" y="500" font-size="12">my/app/service-secrets</text>
+  <text class="text" x="446" y="500" font-size="12">7</text>
+  <text class="text" x="536" y="500" font-size="12">7</text>
+  <rect x="604" y="488" width="52" height="20" rx="10" fill="rgba(47,191,113,.15)"/>
+  <text x="630" y="502" font-size="11" fill="#2fbf71" text-anchor="middle">✓</text>
+  <rect x="686" y="488" width="56" height="20" rx="10" fill="rgba(47,191,113,.15)"/>
+  <text x="714" y="502" font-size="11" fill="#2fbf71" text-anchor="middle">ok</text>
+  <line class="line" x1="44" y1="516" x2="854" y2="516"/>
+  <text class="text mono" x="52" y="540" font-size="12">my/app/db-secrets</text>
+  <text class="text" x="446" y="540" font-size="12">4</text>
+  <text class="text" x="536" y="540" font-size="12">4</text>
+  <rect x="604" y="528" width="52" height="20" rx="10" fill="rgba(47,191,113,.15)"/>
+  <text x="630" y="542" font-size="11" fill="#2fbf71" text-anchor="middle">✓</text>
+  <rect x="686" y="528" width="56" height="20" rx="10" fill="rgba(47,191,113,.15)"/>
+  <text x="714" y="542" font-size="11" fill="#2fbf71" text-anchor="middle">ok</text>
+  <line class="line" x1="44" y1="556" x2="854" y2="556"/>
+  <text class="muted" x="52" y="580" font-size="12">Backed up locally → skr-app/backups/&lt;account&gt;_&lt;ts&gt;/</text>
+
+  <!-- panel 3 -->
+  <rect class="panel line" x="24" y="608" width="912" height="190" rx="10"/>
+  <text class="text" x="44" y="638" font-size="16" font-weight="600">3. Key / values to insert</text>
+  <rect class="field line" x="44" y="652" width="500" height="30" rx="8"/>
+  <text class="muted mono" x="56" y="672" font-size="12">KEY</text>
+  <rect class="field line" x="552" y="652" width="260" height="30" rx="8"/>
+  <text class="muted mono" x="564" y="672" font-size="12">value</text>
+  <rect class="grey" x="820" y="652" width="34" height="30" rx="8"/>
+  <text class="text" x="837" y="672" font-size="12" text-anchor="middle">✕</text>
+  <rect class="grey" x="44" y="694" width="180" height="30" rx="8"/>
+  <text class="text" x="134" y="714" font-size="13" text-anchor="middle">+ Add key/value row</text>
+  <text class="muted" x="44" y="748" font-size="13">…or paste JSON</text>
+  <rect class="field line" x="44" y="756" width="810" height="30" rx="8"/>
+  <text class="muted mono" x="56" y="776" font-size="12">{ "EXAMPLE_HOST": "service.example.internal", "EXAMPLE_PORT": "6379" }</text>
+
+  <!-- panel 4 -->
+  <rect class="panel line" x="24" y="810" width="912" height="150" rx="10"/>
+  <text class="text" x="44" y="840" font-size="16" font-weight="600">4. Preview &amp; Apply changes</text>
+  <text class="muted mono" x="44" y="872" font-size="12">ADD: 2 new  ·  REPLACE: 1 (old→new)  ·  keys_after − added == keys_before</text>
+  <rect x="44" y="884" width="70" height="22" rx="11" fill="rgba(47,191,113,.15)"/>
+  <text x="79" y="899" font-size="12" fill="#2fbf71" text-anchor="middle">PASS</text>
+  <rect class="accent" x="44" y="918" width="290" height="32" rx="8"/>
+  <text x="189" y="939" font-size="13" fill="#fff" text-anchor="middle">Preview changes (dry-run, no write)</text>
+  <rect class="red" x="344" y="918" width="210" height="32" rx="8"/>
+  <text x="449" y="939" font-size="13" fill="#fff" text-anchor="middle">Final: Apply changes…</text>
+
+  <!-- panel 5 -->
+  <rect class="panel line" x="24" y="972" width="912" height="128" rx="10"/>
+  <text class="text" x="44" y="1002" font-size="16" font-weight="600">5. Rollback (by path)</text>
+  <rect class="field line" x="44" y="1014" width="810" height="30" rx="8"/>
+  <text class="muted mono" x="56" y="1034" font-size="12">my/app/service-secrets</text>
+  <rect class="accent" x="44" y="1056" width="260" height="30" rx="8"/>
+  <text x="174" y="1076" font-size="13" fill="#fff" text-anchor="middle">Rollback dry-run (read-only)</text>
+  <rect class="red" x="314" y="1056" width="180" height="30" rx="8"/>
+  <text x="404" y="1076" font-size="13" fill="#fff" text-anchor="middle">Final: Roll back…</text>
+
+  <!-- footer -->
+  <text class="muted" x="480" y="1130" font-size="12" text-anchor="middle">Local only (127.0.0.1). Preview is read-only; applying writes only after you confirm the account.</text>
+
+  <!-- confirm modal overlay -->
+  <rect x="300" y="360" width="360" height="200" rx="12" fill="#171a21" stroke="#2a2f3a" stroke-width="1"/>
+  <text class="text" x="320" y="392" font-size="15" font-weight="600">Confirm write to AWS Secrets Manager</text>
+  <rect class="field line" x="320" y="404" width="320" height="76" rx="8"/>
+  <text class="muted mono" x="332" y="426" font-size="12">account  123456789012</text>
+  <text class="muted mono" x="332" y="444" font-size="12">arn      arn:aws:iam::…:user/operator</text>
+  <text class="mono" x="332" y="464" font-size="12" fill="#e2a33a">⚠ verify this is the right account</text>
+  <rect class="grey" x="320" y="498" width="90" height="34" rx="8"/>
+  <text class="text" x="365" y="520" font-size="13" text-anchor="middle">Cancel</text>
+  <rect class="red" x="420" y="498" width="160" height="34" rx="8"/>
+  <text x="500" y="520" font-size="13" fill="#fff" text-anchor="middle">Confirm &amp; Apply</text>
+</svg>
